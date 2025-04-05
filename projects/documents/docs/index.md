@@ -2,22 +2,20 @@
 layout: home
 
 hero:
-  name: nianba23 FE
-  #   text: Don’t forget the lessons in the dark
-  tagline: Your time will come
+  name: naturalch FE
+  text: Your time will come
+  tagline: Tired people no longer run
   actions:
     - theme: brand
       text: View on Github
-      link: https://github.com/nianba23
+      link: https://github.com/naturalch
 
 features:
-  #   - icon: ⚡️
   - title: By yourself
     details: Be a better version of yourself.
-  #   - icon: 🖖
+    # icon: ✨
   - title: Progress not perfection
     details: Always do your best. What you plant now, you will harvest later.
-  #   - icon: 🛠️️
   - title: Natural
     details: Love yourself first and everything else falls into line.
 ---

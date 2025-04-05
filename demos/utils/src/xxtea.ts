@@ -16,33 +16,33 @@
 /* jshint node:true, eqeqeq:true */
 'use strict';
 
-var delta = 0x9E3779B9;
+const delta = 0x9E3779B9;
 
 function toUint8Array(v: any, includeLength: any) {
-    var length = v.length;
-    var n = length << 2;
+    const length = v.length;
+    let n = length << 2;
     if (includeLength) {
-        var m = v[length - 1];
+        const m = v[length - 1];
         n -= 4;
         if ((m < n - 3) || (m > n)) {
             return null;
         }
         n = m;
     }
-    var bytes = new Uint8Array(n);
-    for (var i = 0; i < n; ++i) {
+    const bytes = new Uint8Array(n);
+    for (let i = 0; i < n; ++i) {
         bytes[i] = v[i >> 2] >> ((i & 3) << 3);
     }
     return bytes;
 }
 
 function toUint32Array(bytes: any, includeLength: any) {
-    var length = bytes.length;
-    var n = length >> 2;
+    const length = bytes.length;
+    let n = length >> 2;
     if ((length & 3) !== 0) {
         ++n;
     }
-    var v;
+    let v;
     if (includeLength) {
         v = new Uint32Array(n + 1);
         v[n] = length;
@@ -50,7 +50,7 @@ function toUint32Array(bytes: any, includeLength: any) {
     else {
         v = new Uint32Array(n);
     }
-    for (var i = 0; i < length; ++i) {
+    for (let i = 0; i < length; ++i) {
         v[i >> 2] |= bytes[i] << ((i & 3) << 3);
     }
     return v;
@@ -62,7 +62,7 @@ function mx(sum: any, y: any, z: any, p: any, e: any, k: any) {
 
 function fixk(k: any) {
     if (k.length < 16) {
-        var key = new Uint8Array(16);
+        const key = new Uint8Array(16);
         key.set(k);
         k = key;
     }
@@ -70,9 +70,9 @@ function fixk(k: any) {
 }
 
 function encryptUint32Array(v: any, k: any) {
-    var length = v.length;
-    var n = length - 1;
-    var y, z, sum, e, p, q;
+    const length = v.length;
+    const n = length - 1;
+    let y, z, sum, e, p, q;
     z = v[n];
     sum = 0;
     for (q = Math.floor(6 + 52 / length) | 0; q > 0; --q) {
@@ -89,9 +89,9 @@ function encryptUint32Array(v: any, k: any) {
 }
 
 function decryptUint32Array(v: any, k: any) {
-    var length = v.length;
-    var n = length - 1;
-    var y, z, sum, e, p, q;
+    const length = v.length;
+    const n = length - 1;
+    let y, z, sum, e, p, q;
     y = v[0];
     q = Math.floor(6 + 52 / length);
     for (sum = q * delta; sum !== 0; sum -= delta) {
@@ -107,13 +107,13 @@ function decryptUint32Array(v: any, k: any) {
 }
 
 function toBytes(str: any) {
-    var n = str.length;
+    const n = str.length;
     // A single code unit uses at most 3 bytes.
     // Two code units at most 4.
-    var bytes = new Uint8Array(n * 3);
-    var length = 0;
-    for (var i = 0; i < n; i++) {
-        var codeUnit = str.charCodeAt(i);
+    const bytes = new Uint8Array(n * 3);
+    let length = 0;
+    for (let i = 0; i < n; i++) {
+        const codeUnit = str.charCodeAt(i);
         if (codeUnit < 0x80) {
             bytes[length++] = codeUnit;
         }
@@ -128,9 +128,9 @@ function toBytes(str: any) {
         }
         else {
             if (i + 1 < n) {
-                var nextCodeUnit = str.charCodeAt(i + 1);
+                const nextCodeUnit = str.charCodeAt(i + 1);
                 if (codeUnit < 0xDC00 && 0xDC00 <= nextCodeUnit && nextCodeUnit <= 0xDFFF) {
-                    var rune = (((codeUnit & 0x03FF) << 10) | (nextCodeUnit & 0x03FF)) + 0x010000;
+                    const rune = (((codeUnit & 0x03FF) << 10) | (nextCodeUnit & 0x03FF)) + 0x010000;
                     bytes[length++] = 0xF0 | (rune >> 18);
                     bytes[length++] = 0x80 | ((rune >> 12) & 0x3F);
                     bytes[length++] = 0x80 | ((rune >> 6) & 0x3F);
@@ -146,10 +146,10 @@ function toBytes(str: any) {
 }
 
 function toShortString(bytes: any, n: any) {
-    var charCodes = new Uint16Array(n);
-    var i = 0, off = 0;
-    for (var len = bytes.length; i < n && off < len; i++) {
-        var unit = bytes[off++];
+    let charCodes = new Uint16Array(n);
+    let i = 0, off = 0;
+    for (let len = bytes.length; i < n && off < len; i++) {
+        const unit = bytes[off++];
         switch (unit >> 4) {
             case 0:
             case 1:
@@ -183,7 +183,7 @@ function toShortString(bytes: any, n: any) {
                 break;
             case 15:
                 if (off + 2 < len) {
-                    var rune = (((unit & 0x07) << 18) |
+                    const rune = (((unit & 0x07) << 18) |
                         ((bytes[off++] & 0x3F) << 12) |
                         ((bytes[off++] & 0x3F) << 6) |
                         (bytes[off++] & 0x3F)) - 0x10000;
@@ -211,11 +211,11 @@ function toShortString(bytes: any, n: any) {
 }
 
 function toLongString(bytes: any, n: any) {
-    var buf = [];
-    var charCodes = new Uint16Array(0x8000);
-    var i = 0, off = 0;
-    for (var len = bytes.length; i < n && off < len; i++) {
-        var unit = bytes[off++];
+    const buf = [];
+    const charCodes = new Uint16Array(0x8000);
+    let i = 0, off = 0;
+    for (let len = bytes.length; i < n && off < len; i++) {
+        const unit = bytes[off++];
         switch (unit >> 4) {
             case 0:
             case 1:
@@ -249,7 +249,7 @@ function toLongString(bytes: any, n: any) {
                 break;
             case 15:
                 if (off + 2 < len) {
-                    var rune = (((unit & 0x07) << 18) |
+                    const rune = (((unit & 0x07) << 18) |
                         ((bytes[off++] & 0x3F) << 12) |
                         ((bytes[off++] & 0x3F) << 6) |
                         (bytes[off++] & 0x3F)) - 0x10000;
@@ -269,7 +269,7 @@ function toLongString(bytes: any, n: any) {
                 throw new Error('Bad UTF-8 encoding 0x' + unit.toString(16));
         }
         if (i >= 0x7FFF - 1) {
-            var size = i + 1;
+            const size = i + 1;
             // @ts-ignore
             buf.push(String.fromCharCode.apply(String, charCodes.subarray(0, size)));
             n -= size;
@@ -284,7 +284,7 @@ function toLongString(bytes: any, n: any) {
 }
 
 function toString(bytes: any) {
-    var n = bytes.length;
+    const n = bytes.length;
     if (n === 0) { return ''; }
     return ((n < 0x7FFF) ?
         toShortString(bytes, n) :

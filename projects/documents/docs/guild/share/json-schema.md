@@ -12,88 +12,88 @@ JSON Schema 是一种声明性语言，可用于注释和验证 JSON 文档的�
 
 ```json
 {
-    "$schema": "https://json-schema.org/draft-07/schema", // 声明 schema 的版本（需要目标编辑器支持）
-    "$id": "http://example.com/example.json",
-    "type": "object",
-    "default": {},
-    "title": "Root Schema",
-    "required": ["checked", "dimensions", "id", "name", "price", "tags"],
-    "properties": {
-        "checked": {
-            "type": "boolean",
-            "default": false,
-            "title": "The checked Schema",
-            "examples": [false]
-        },
-        "dimensions": {
-            "type": "object",
-            "default": {},
-            "title": "The dimensions Schema",
-            "required": ["width", "height"],
-            "properties": {
-                "width": {
-                    "type": "integer",
-                    "default": 0,
-                    "title": "The width Schema",
-                    "examples": [5]
-                },
-                "height": {
-                    "type": "integer",
-                    "default": 0,
-                    "title": "The height Schema",
-                    "examples": [10]
-                }
-            },
-            "examples": [
-                {
-                    "width": 5,
-                    "height": 10
-                }
-            ]
-        },
-        "id": {
-            "type": "integer",
-            "default": 0,
-            "title": "The id Schema",
-            "examples": [1]
-        },
-        "name": {
-            "type": "string",
-            "default": "",
-            "title": "The name Schema",
-            "examples": ["A green door"]
-        },
-        "price": {
-            "type": "string",
-            "default": "",
-            "title": "The price Schema",
-            "examples": ["dd"]
-        },
-        "tags": {
-            "type": "array",
-            "default": [],
-            "title": "The tags Schema",
-            "items": {
-                "type": "string",
-                "title": "A Schema",
-                "examples": ["home", "green"]
-            },
-            "examples": [["home", "green"]]
-        }
+  "$schema": "https://json-schema.org/draft-07/schema", // 声明 schema 的版本（需要目标编辑器支持）
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": ["checked", "dimensions", "id", "name", "price", "tags"],
+  "properties": {
+    "checked": {
+      "type": "boolean",
+      "default": false,
+      "title": "The checked Schema",
+      "examples": [false]
     },
-    "examples": [
-        {
-            "checked": false,
-            "dimensions": {
-                "width": 5,
-                "height": 10
-            },
-            "id": 1,
-            "name": "A green door",
-            "price": "dd",
-            "tags": ["home", "green"]
+    "dimensions": {
+      "type": "object",
+      "default": {},
+      "title": "The dimensions Schema",
+      "required": ["width", "height"],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "default": 0,
+          "title": "The width Schema",
+          "examples": [5]
+        },
+        "height": {
+          "type": "integer",
+          "default": 0,
+          "title": "The height Schema",
+          "examples": [10]
         }
-    ]
+      },
+      "examples": [
+        {
+          "width": 5,
+          "height": 10
+        }
+      ]
+    },
+    "id": {
+      "type": "integer",
+      "default": 0,
+      "title": "The id Schema",
+      "examples": [1]
+    },
+    "name": {
+      "type": "string",
+      "default": "",
+      "title": "The name Schema",
+      "examples": ["A green door"]
+    },
+    "price": {
+      "type": "string",
+      "default": "",
+      "title": "The price Schema",
+      "examples": ["dd"]
+    },
+    "tags": {
+      "type": "array",
+      "default": [],
+      "title": "The tags Schema",
+      "items": {
+        "type": "string",
+        "title": "A Schema",
+        "examples": ["home", "green"]
+      },
+      "examples": [["home", "green"]]
+    }
+  },
+  "examples": [
+    {
+      "checked": false,
+      "dimensions": {
+        "width": 5,
+        "height": 10
+      },
+      "id": 1,
+      "name": "A green door",
+      "price": "dd",
+      "tags": ["home", "green"]
+    }
+  ]
 }
 ```
 
@@ -105,12 +105,12 @@ vs code 开箱支持 JSON Schema，只需要在 setting.json 中添加 `json.sch
 
 ```json5
 {
-    'json.schemas': [
-        {
-            fileMatch: ['nianba23.json'],
-            url: './nianba23-schema.json', // JSON Schema 的路径 它相对于当前项目的 Root
-        },
-    ],
+  'json.schemas': [
+    {
+      fileMatch: ['naturalch.json'],
+      url: './naturalch-schema.json', // JSON Schema 的路径 它相对于当前项目的 Root
+    },
+  ],
 }
 ```
 
@@ -118,14 +118,14 @@ vscode 还有一种使用 JSON Schema 的方式，就是在 JSON 文档中添加
 
 ```json5
 {
-    $schema: './nianba23-schema.json', // 它也可以是一个在线的地址
-    name: 'nianba23',
-    version: '1.0.0',
-    description: 'nianba23 项目配置',
+  $schema: './naturalch-schema.json', // 它也可以是一个在线的地址
+  name: 'naturalch',
+  version: '1.0.0',
+  description: 'naturalch 项目配置',
 }
 ```
 
-这样，在 vs code 中打开名为 nianba23.json 文件的时候，就会提示我们定义的 JSON Schema。
+这样，在 vscode 中打开名为 naturalch.json 文件的时候，就会提示我们定义的 JSON Schema。
 
 ### 公共 Schema
 

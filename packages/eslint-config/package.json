@@ -1,7 +1,7 @@
 {
-  "name": "@nianba23-fe/eslint-config",
+  "name": "@naturalch-fe/eslint-config",
   "version": "1.0.0",
-  "description": "nianba23 的共享配置",
+  "description": "naturalch 的共享配置",
   "exports": {
     ".": {
       "require": "./index.js"
@@ -10,7 +10,7 @@
       "require": "./extend-onecode.js"
     }
   },
-  "author": "nianba23",
+  "author": "naturalch",
   "scripts": {},
   "engines": {
     "node": ">=16.0.0"
@@ -23,7 +23,7 @@
     "vue-eslint-parser": "^9.3.2",
     "eslint-plugin-filenames": "^1.3.2"
   },
-  "homepage": "https://www.npmjs.com/package/@nianba23-fe/eslint-config",
+  "homepage": "https://www.npmjs.com/package/@naturalch-fe/eslint-config",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"

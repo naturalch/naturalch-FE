@@ -1,6 +1,6 @@
 ## 发布 scope 包
 
-🪜配置终端代理
+🪜 配置终端代理
 
 ```bash
 export http_proxy=http://localhost:4780
@@ -27,5 +27,5 @@ unset https_proxy
 
 ```
 registry=https://registry.npmjs.org
-@nianba23-fe:registry=https://registry.npmjs.org
+@naturalch-fe:registry=https://registry.npmjs.org
 ```

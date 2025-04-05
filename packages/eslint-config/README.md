@@ -1,6 +1,6 @@
 # ESLint config
 
-[使用教程](https://nianba23.github.io/core/eslint.html)
+[使用教程](https://naturalch.github.io/core/eslint.html)
 
 ## 参考链接
 
@@ -18,8 +18,9 @@
 - "error" 或 2: 表示开启该规则，并将违反规则的地方视为错误。在代码中存在违规情况时，ESLint 会报告错误并且可能会阻止代码的执行（取决于配置）。
 
 **关闭规则验证**
-- 当前文件： /* eslint-disable no-console */
-- 下一行：   /* eslint-disable-next-line */
-- 当前行：   /* eslint-disable-line no-alert */
+
+- 当前文件： /_ eslint-disable no-console _/
+- 下一行： /_ eslint-disable-next-line _/
+- 当前行： /_ eslint-disable-line no-alert _/
 
 如果规则不生效，可以按 cmd + p 唤起功能搜索面板，按 F1，选择 Eslint: restart eslint server。

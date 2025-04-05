@@ -1,17 +1,17 @@
 {
-    "name": "vitepress-doc",
-    "version": "1.0.0",
-    "description": "nianba23's doc",
-    "type": "module",
-    "scripts": {
-        "dev": "vitepress dev docs --host --port 4444",
-        "build": "vitepress build docs",
-        "serve": "vitepress serve docs"
-    },
-    "author": "nianba23",
-    "devDependencies": {
-        "mermaid": "^10.6.1",
-        "vitepress": "^1.0.0-rc.31",
-        "vitepress-plugin-mermaid": "^2.0.16"
-    }
+  "name": "vitepress-doc",
+  "version": "1.0.0",
+  "description": "naturalch's doc",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs --host --port 4444",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "author": "naturalch",
+  "devDependencies": {
+    "mermaid": "^10.6.1",
+    "vitepress": "^1.0.0-rc.31",
+    "vitepress-plugin-mermaid": "^2.0.16"
+  }
 }

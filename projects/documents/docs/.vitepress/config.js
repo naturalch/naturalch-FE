@@ -3,14 +3,14 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 export default withMermaid(
     defineConfig({
-        title: 'nianba23', // 站点标题
-        description: 'nianba23 doc', // meta 标签描述
+        title: 'naturalch', // 站点标题
+        description: 'naturalch doc', // meta 标签描述
         themeConfig: {
             // 左上角 logo 和 title
-            siteTitle: 'nianba23',
+            siteTitle: 'naturalch',
             logo: '/logo.png',
             // 社交链接
-            socialLinks: [{ icon: "github", link: "https://github.com/nianba23", }],
+            socialLinks: [{ icon: "github", link: "https://github.com/naturalch", }],
             // 上方右侧导航
             nav: [
                 { text: '文档', link: '/guild/', activeMatch: '^/guild/' },
@@ -44,7 +44,7 @@ export default withMermaid(
             },
             footer: {
                 message: '',
-                copyright: 'MIT Licensed | Copyright © 2023-present nianba23 FE'
+                copyright: 'MIT Licensed | Copyright © 2025-present naturalch FE'
             },
         },
     })
@@ -74,6 +74,7 @@ function getGuildSidebar() {
                 { text: 'SVG', link: '/guild/share/svg' },
                 { text: 'JSON Schema', link: '/guild/share/json-schema' },
                 { text: 'Mac 装机', link: '/guild/share/setup-mac' },
+                { text: 'Electron', link: '/guild/share/electron' },
             ],
         },
         {

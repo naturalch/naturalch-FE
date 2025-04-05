@@ -44,7 +44,8 @@ mac 的文件系统和 windows 不同，没有盘符的区分，在安装软件�
   一款的菜单栏管理工具,主要功能是隐藏和显示菜单栏项目
 - UPDF
 - DeepL
-- Snipaste
+- PixPin
+- FastZip
 
 - Notion
 - DBeaver

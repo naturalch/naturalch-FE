@@ -26,7 +26,7 @@ git commit -m 'deploy'
 # 如果部署到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 echo 'Pushing to GitHub Pages...'
-git push -f git@github.com:nianba23/nianba23.github.io.git main:main
+git push -f git@github.com:naturalch/naturalch.github.io.git main:main
 
 # 如果是部署到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages

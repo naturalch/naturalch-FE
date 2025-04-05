@@ -1,87 +1,76 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Debug Project",
-            "type": "node",
-            "outputCapture": "std",
-            "request": "launch",
-            "protocol": "inspector",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-            "windows": {
-                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
-            },
-            "args": [
-                "./app",
-                "--path",
-                "./",
-                "--dev",
-                "--remote-debugging-port=9223",
-                "--project",
-                "${input:project}"
-            ]
-        },
-        {
-            "name": "Command Build config",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-            "windows": {
-                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
-            },
-            "args": [
-                "./app",
-                "--path",
-                "./",
-                "--project",
-                "${input:project}",
-                "--build",
-                "configPath=${input:project}\\build-configs\\buildConfig_${input:platform}.json;"
-            ]
-        },
-        {
-            "name": "Command Build default",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-            "windows": {
-                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
-            },
-            "args": [
-                "./app",
-                "--path",
-                "./",
-                "--dev",
-                "--project",
-                "${input:project}",
-                "--build",
-                "platform=${input:platform}; debug=true;"
-            ]
-        }
-    ],
-    "inputs": [
-        {
-            "id": "project",
-            "description": "Project to launch.",
-            "type": "pickString",
-            "options": [
-                // 你希望启动、调试的所有项目
-                "E:\\repositories\\cocos-test-projects"
-            ],
-            "default": "E:\\repositories\\cocos-test-projects"
-        },
-        {
-            "id": "platform",
-            "description": "build platform",
-            "type": "pickString",
-            "options": [
-                "web-mobile",
-                "web-desktop"
-            ],
-            "default": "web-mobile"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Project",
+      "type": "node",
+      "outputCapture": "std",
+      "request": "launch",
+      "protocol": "inspector",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "args": ["./app", "--path", "./", "--dev", "--remote-debugging-port=9223", "--project", "${input:project}"]
+    },
+    {
+      "name": "Command Build config",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "args": [
+        "./app",
+        "--path",
+        "./",
+        "--project",
+        "${input:project}",
+        "--build",
+        "configPath=${input:project}\\build-configs\\buildConfig_${input:platform}.json;"
+      ]
+    },
+    {
+      "name": "Command Build default",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "args": [
+        "./app",
+        "--path",
+        "./",
+        "--dev",
+        "--project",
+        "${input:project}",
+        "--build",
+        "platform=${input:platform}; debug=true;"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "project",
+      "description": "Project to launch.",
+      "type": "pickString",
+      "options": [
+        // 你希望启动、调试的所有项目
+        "E:\\repositories\\cocos-test-projects"
+      ],
+      "default": "E:\\repositories\\cocos-test-projects"
+    },
+    {
+      "id": "platform",
+      "description": "build platform",
+      "type": "pickString",
+      "options": ["web-mobile", "web-desktop"],
+      "default": "web-mobile"
+    }
+  ]
 }

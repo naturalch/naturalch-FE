@@ -1,38 +1,38 @@
 {
-    "name": "nianba23-FE",
-    "version": "1.0.0",
-    "description": "nianba23 FE",
-    "private": false,
-    "workspaces": [
-        "projects/*",
-        "packages/*",
-        "demos/*"
-    ],
-    "scripts": {
-        "preinstall": "node ./scripts/preinstall-check-node.js",
-        "docs:dev": "npm run dev -w vitepress-doc",
-        "docs:build": "npm run build -w vitepress-doc",
-        "docs:serve": "npm run serve -w vitepress-doc",
-        "lint:js": "cross-env NODE_ENV=production eslint --fix --ext .js,.ts,.vue,.tsx",
-        "prepare": "husky install"
-    },
-    "author": "nianba23",
-    "license": "MIT",
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^6.13.1",
-        "@typescript-eslint/parser": "^6.13.1",
-        "cross-env": "^7.0.3",
-        "eslint": "^8.54.0",
-        "eslint-plugin-vue": "^9.19.2",
-        "husky": "^8.0.0",
-        "lint-staged": "^15.1.0"
-    },
-    "lint-staged": {
-        "*.{js,ts,vue}": [
-            "npm run lint:js"
-        ]
-    },
-    "engines": {
-        "node": ">=16.0.0"
-    }
+  "name": "naturalch-FE",
+  "version": "1.0.0",
+  "description": "naturalch FE",
+  "private": false,
+  "workspaces": [
+    "projects/*",
+    "packages/*",
+    "demos/*"
+  ],
+  "scripts": {
+    "preinstall": "node ./scripts/preinstall-check-node.js",
+    "docs:dev": "npm run dev -w vitepress-doc",
+    "docs:build": "npm run build -w vitepress-doc",
+    "docs:serve": "npm run serve -w vitepress-doc",
+    "lint:js": "cross-env NODE_ENV=production eslint --fix --ext .js,.ts,.vue,.tsx",
+    "prepare": "husky install"
+  },
+  "author": "naturalch",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.54.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.1.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "npm run lint:js"
+    ]
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }
