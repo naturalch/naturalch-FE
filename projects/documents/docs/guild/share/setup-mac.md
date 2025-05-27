@@ -48,7 +48,7 @@ mac 的文件系统和 windows 不同，没有盘符的区分，在安装软件�
 - FastZip
 
 - Notion
-- DBeaver
+- Navicat Premium
 - Apifox
 - Sourecetree
 
@@ -142,6 +142,96 @@ mac 的文件系统和 windows 不同，没有盘符的区分，在安装软件�
 - vscode-icons
 - Vue VSCode Snippets
 - VueHelper
+
+## Macos 上配置 SSH key
+
+1. 检查是否已经有 ssh
+
+```
+ls -al ~/.ssh
+```
+
+如果已经有 SSH 可以看到类似 id_rsa 等文件
+
+2. 如果没有 SSH key，可以执行以下命令生成
+
+```
+ssh-keygen -t rsa -b 4096 -C "<your_email>"
+```
+
+3. 添加 SSH 到 SSH Agent
+
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+```
+
+4. 复制 SSH
+
+```
+pbcopy < ~/.ssh/id_rsa.pub
+```
+
+5. 添加 SSH 到 GitHub
+
+在 GitHub 的个人设置页面，点击 SSH and GPG keys，然后点击 New SSH key，将刚才复制的 SSH key 粘贴进去，并命名。
+
+6. 测试连接
+
+```
+ssh -T git@github.com
+```
+
+7. 如果同时使用多个平台，例如 GitHub 和 Gitlab，可以再为 gitlab 也添加 SSH key。
+
+```
+ssh-keygen -t rsa -C "your_email@example.com"
+```
+
+替换在 gitlab 上注册的邮箱地址，回车后会要求选择一个路径来保存新的密钥，这边定义一个区分 GitHub 的路径，例如：~/.ssh/id_rsa_gitlab。接下来要求输入一个密码短语，可以选择输入密码短语或直接按回车键跳过此步骤。最后生成的公钥和私钥会保存在 ~/.ssh/ 下面。
+同样，将生成的公钥粘贴到 gitlab 进行配置
+
+在使用 Git 时，可以根据需要选择使用哪个密钥。例如，可以使用 GitLab 的密钥来与 GitLab 进行通信，使用 GitHub 的密钥来与 GitHub 进行通信。
+为了在不同的仓库中使用不同的密钥，使用 ssh-agent 管理 ssh keys
+
+```
+ssh-add ~/.ssh/id_rsa_github
+ssh-add ~/.ssh/id_rsa_gitlab
+```
+
+然后创建 ~/.ssh/config 文件来指定使用哪个密钥。例如：
+
+```
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_github
+
+Host gitlab.com
+  HostName gitlab.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_gitlab
+```
+
+配置好后同样适用命令 `ssh -T git@gitlab.com` 测试连接
+
+> 我使用的 git 版本管理工具是 Fork，可以 New SSH key 填写 key file name 和 emil 后生成一个新的 SSH key，然后将这个 key 复制到 GitHub 的 SSH key 里。
+
+8. 配置提交记录信息
+
+git 的提交记录的作者信息是从全局配置或者每个仓库的配置中获取的，可以配置一个全局用户信息，使用 Git 命令提交时，默认情况下会使用全局配置中的用户名和电子邮件地址：
+
+```
+git config --global user.name "naturalch"
+git config --global user.email "your@email.com"
+```
+
+要在不同的 Git 托管平台上使用不同的用户名，可以使用 Git 的本地配置来覆盖全局配置，此时再提交 Git 时将使用该配置中的用户名和电子邮件地址：
+
+```
+git config user.name "naturalch"
+git config user.email "your@email.com"
+```
 
 #### 配置 ssh 密钥
 
